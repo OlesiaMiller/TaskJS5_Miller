@@ -26,11 +26,17 @@
             <input type="file" id="file" name="file" />
         </form> -->
 
-        <form method='post' action='upload.php' enctype='multipart/form-data'>
-        Выберете файл: <input type='file' name='filename' size='10'>
-        <input type='submit' value='Загрузить'>
+        <form method='post' action='upload.php' name='filename' enctype='multipart/form-data' id="form">
+        Выберете файл: <input type='file' size='10' id='fileName'>
+        <input type='submit' value='Загрузить' id='test'>
+        <input type="text" id='newDiscription'>
+        <input type="number" id='newCost'>
         </form>
-    
+        
+    <!-- <input type="text" id='newDiscription'>
+    <button id="download">gfdgfdbfdb</button> -->
+
+
     <h1>My Plants</h1>
     <div class="nav">
     	<button class="cell" id="cell">Сетка</button>

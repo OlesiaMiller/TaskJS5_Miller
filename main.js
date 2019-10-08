@@ -5,8 +5,15 @@ var imgCont = document.getElementsByClassName('container_item-img');
 var img = document.getElementsByClassName('img');
 var description = document.getElementsByClassName('container_item-description');
 var price = document.getElementsByClassName('container_item-price');
-var button1 = document.getElementById('button1');
-var button2 = document.getElementById('button2');
+var button = document.getElementById('button');
+var newDiscription = document.getElementById('newDiscription');
+var newCost = document.getElementById('newCost');
+var download = document.getElementById('test');
+var fileName = document.getElementById('fileName');
+var form = document.getElementById('form');
+
+let amount = +getGlobalVar('amount');
+
 
 var imgCollect = [{name: 'images/Aloe-Vera5_3.jpg', description: 'Aloe Vera In Mini Dolores Planter', price: '$25'}, 
                  {name: 'images/airplant3.jpg', description: 'Aloe Vera In Mini Dolores Planter', price: '$25'},
@@ -30,9 +37,65 @@ var imgCollect = [{name: 'images/Aloe-Vera5_3.jpg', description: 'Aloe Vera In M
                  {name: 'images/Aloe-Vera5_3.jpg', description: 'Aloe Vera In Mini Dolores Planter', price: '$100'}, 
 
 ]
+// console.log(imgCollect);
+
 
 var z = 0;
 var y = 8;
+// var array = [];
+
+
+var array =  JSON.parse(getGlobalVar('array'));
+console.log(array);
+
+
+
+function saveGlobalVar(name, value) {
+    sessionStorage.setItem(name, value); // сохраняем в localStorage значение
+  }
+  function getGlobalVar(name) {
+    return sessionStorage.getItem(name); // получаем значение свойства localStorage
+  }
+
+//   var testObject = { 'one': 1, 'two': 2, 'three': 3 };
+
+// Put the object into storage
+// sessionStorage.setItem('testObject', JSON.stringify(imgCollect));
+
+// Retrieve the object from storage
+// var retrievedObject = sessionStorage.getItem('testObject');
+// var array = sessionStorage.getItem('testObject');
+
+
+// console.log('retrievedObject: ', JSON.parse(array));
+
+  
+
+download.addEventListener('mouseover', function() {
+    console.log('hello');
+    console.log(fileName.value);
+
+    form.name = fileName.value;
+
+    let newGoods = {
+        name: fileName.value,
+        description: newDiscription.value,
+        price: newCost.value
+    }
+    // console.log(imgCollect);
+    console.log(newGoods);
+    array.push(newGoods);
+
+    // console.log(imgCollect);
+    saveGlobalVar('array', JSON.stringify(imgCollect));
+    // console.log(imgCollect);
+
+    console.log(array);
+    console.log(typeof array);
+    
+
+
+})
 
 var cellClick = function() {
     for (let i = z; i < y; i++) {
@@ -46,7 +109,9 @@ var cellClick = function() {
 
         var l = document.createElement('img');
         l.className = 'img img-list';
-        l.setAttribute('src',imgCollect[i].name);
+        // l.setAttribute('src',imgCollect[i].name);
+        l.setAttribute('src', array[i].name);
+
         m.appendChild(l);
         
 
@@ -56,7 +121,9 @@ var cellClick = function() {
 
         
         var p = document.createElement('p');
-        p.innerHTML = imgCollect[i].description;
+        // p.innerHTML = imgCollect[i].description;
+        p.innerHTML = array[i].description;
+
         r.appendChild(p);
 
         var pr = document.createElement('div');
@@ -64,7 +131,9 @@ var cellClick = function() {
         n.appendChild(pr);
 
         var cost = document.createElement('p');
-        cost.innerHTML = imgCollect[i].price;
+        // cost.innerHTML = imgCollect[i].price;
+        cost.innerHTML = array[i].price;
+
         pr.appendChild(cost);
     }
 }
@@ -103,7 +172,9 @@ var listClick = function() {
 
         var l = document.createElement('img');
         l.className = 'img-list';
-        l.setAttribute('src',imgCollect[i].name);
+        // l.setAttribute('src',imgCollect[i].name);
+        l.setAttribute('src',array[i].name);
+
         m.appendChild(l);
         
 
@@ -113,7 +184,9 @@ var listClick = function() {
 
         
         var p = document.createElement('p');
-        p.innerHTML = imgCollect[i].description;
+        // p.innerHTML = imgCollect[i].description;
+        p.innerHTML = array[i].description;
+
         r.appendChild(p);
 
         var pr = document.createElement('div');
@@ -121,7 +194,9 @@ var listClick = function() {
         n.appendChild(pr);
 
         var cost = document.createElement('p');
-        cost.innerHTML = imgCollect[i].price;
+        // cost.innerHTML = imgCollect[i].price;
+        cost.innerHTML = array[i].price;
+        
         pr.appendChild(cost);
     }
 }
@@ -132,7 +207,11 @@ button.addEventListener('click', function() {
     y += 8;
 
 
-    if (y >= imgCollect.length) {
+    // if (y >= imgCollect.length) {
+    //     button.style.display = 'none';
+    // }
+
+    if (y >= array.length) {
         button.style.display = 'none';
     }
 
@@ -159,45 +238,6 @@ list.addEventListener('click', function() {
     }
 
 })
-
-$(document).on('click', '#btn', function(){
-    var formData = new FormData();
-    formData.append("myFile", document.getElementById("file").files[0], 'chris1.jpg');
-    
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "index.php");
-    xhr.send(formData);
-});
-
-
-////////////////
-$("form#data").submit(function(event){ 
-    event.preventDefault();
-   
-    // складируем форму в ......форму))
-    var formData = new FormData($(this)[0]);
-   
-    $.ajax({
-      url: 'mySuperPuperURL.php',
-      type: 'POST',
-      data: formData,
-      async: false,
-      cache: false,
-      contentType: false,
-      processData: false,
-      success: function (returndata) {
-        alert(returndata);
-      }
-    });
-   
-    return false;
-  });
-
-  
-
-    
-
-
 
 
 
