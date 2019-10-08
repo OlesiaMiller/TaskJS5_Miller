@@ -8,6 +8,22 @@
     <title>Document</title>
 </head>
 <body>
+
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <form id="data">
+          <input type="hidden" name="id" value="123" readonly="readonly">
+          User Name: <input type="text" name="username" value=""><br />
+          Profile Image: <input name="profileImg[]" type="file" /><br />
+          Display Image: <input name="displayImg[]" type="file" /><br />
+          <input type="submit" value="Submit">
+        </form> -->
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <form method="post" enctype="multipart/form-data" action="upload.php">
+        <input type="button" id="btn" value="GO" />
+        <input type="file" id="file" name="file" />
     
     <h1>My Plants</h1>
     <div class="nav">

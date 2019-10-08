@@ -72,6 +72,8 @@ var cellClick = function() {
 
 
 cell.addEventListener('click', function() {
+    event.stopImmediatePropagation();
+
     container.innerHTML = '';
     z = 0;
     y = 8;
@@ -128,7 +130,7 @@ var listClick = function() {
 button.addEventListener('click', function() {
     z += 8;
     y += 8;
-    console.log(y);
+
 
     if (y >= imgCollect.length) {
         button.style.display = 'none';
@@ -140,7 +142,8 @@ button.addEventListener('click', function() {
 })
 
 list.addEventListener('click', function() {
-    container.innerHTML = '';
+    
+        container.innerHTML = '';
     z = 0;
     y = 8;
     button.style.display = 'block';
@@ -156,6 +159,41 @@ list.addEventListener('click', function() {
     }
 
 })
+
+$(document).on('click', '#btn', function(){
+    var formData = new FormData();
+    formData.append("myFile", document.getElementById("file").files[0], 'chris1.jpg');
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "index.php");
+    xhr.send(formData);
+});
+
+
+////////////////
+$("form#data").submit(function(event){ 
+    event.preventDefault();
+   
+    // складируем форму в ......форму))
+    var formData = new FormData($(this)[0]);
+   
+    $.ajax({
+      url: 'mySuperPuperURL.php',
+      type: 'POST',
+      data: formData,
+      async: false,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function (returndata) {
+        alert(returndata);
+      }
+    });
+   
+    return false;
+  });
+
+  
 
     
 
