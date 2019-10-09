@@ -4,44 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
 
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-        <form id="data">
-          <input type="hidden" name="id" value="123" readonly="readonly">
-          User Name: <input type="text" name="username" value=""><br />
-          Profile Image: <input name="profileImg[]" type="file" /><br />
-          Display Image: <input name="displayImg[]" type="file" /><br />
-          <input type="submit" value="Submit">
-        </form> -->
-
-
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <form method="post" enctype="multipart/form-data" action="upload.php">
-            <input type="button" id="btn" value="GO" />
-            <input type="file" id="file" name="file" />
-        </form> -->
-
-        <form method='post' name='filename' enctype='multipart/form-data' id="form">
-        Выберете файл: <input type='file' size='10' id='fileName'>
-        <input type='submit' value='Загрузить' id='test'>
-        <input type="text" id='newDiscription'>
-        <input type="number" id='newCost'>
-        </form>
-        
-    <!-- <input type="text" id='newDiscription'>
-    <button id="download">gfdgfdbfdb</button> -->
-
 
     <h1>My Plants</h1>
     <div class="nav">
-    	<button class="cell" id="cell">Сетка</button>
-    	<button class="list" id="list">Список</button>
+    	<span class="cell" id="cell"><i class="fas fa-th"></i></span>
+    	<span class="list" id="list"><i class="fas fa-list"></i></span>
     </div>
+
+    <button class="add" id="add">Загрузить новый товар</button>
+
+        <form method="post" action="upload.php" enctype="multipart/form-data" id="form" class="form">
+        <!-- Выберете файл: -->
+        <input type='file' size='10'  name='filename' id='fileName' class="upload">
+        
+        <p>Описание</p>
+        <textarea cols="50"  type="text" id="newDiscription"></textarea> 
+        <p>Цена</p>
+        <input type="number" id="newCost" class="cost"><br>
+        <input type="submit" value='Загрузить' id='test' class="upload">
+        </form>
+
+<form action="">
+        <input type="radio" id='one' name="olesia">
+        <input type="radio" id='two' name="olesia">
+        <input type="radio" id='thri' name="olesia">
+</form>
+
+
+    
+
 
     <div class="container" id="container">
 					
